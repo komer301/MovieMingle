@@ -1,0 +1,29 @@
+.custom-body-bg {
+  background-color: #121119;
+}
+
+/* Custom CSS for the search bar */
+.custom-search-bar {
+  width: 300px; /* Adjust the width as needed to make it longer */
+}
+
+.custom-navbar-bg {
+  background-color: #06090d;
+}
+
+/* Custom CSS for the navigation links */
+.custom-nav-link {
+  font-size: 18px; /* Adjust the font size as needed */
+  margin-left: 20px; /* Adjust the left margin for spacing */
+}
+
+/* Custom CSS for the user profile photo */
+.custom-user-photo {
+  width: 32px;
+  height: 32px;
+  margin-left: 20px; /* Adjust the left margin for spacing */
+}
+
+#navBarSearchForm input[type="text"] {
+  width: 430px !important;
+}

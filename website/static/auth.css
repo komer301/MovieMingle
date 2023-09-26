@@ -13,7 +13,3 @@
   width: 100%;
   height: 100%;
 }
-
-.change-color-on-hover:hover a {
-  color: white; /* Change the text color to white when the button is hovered over */
-}

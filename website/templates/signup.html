@@ -13,6 +13,29 @@
               href="{{ url_for('static', filename='auth.css') }}">
     </head>
     <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if
+                messages %}
+                {% for category, message in messages %}
+                    {% if category ==
+                        'error' %}
+                        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success alter-dismissable fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <section class="h-100 gradient-form" style="background-color: #eee;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,17 +56,19 @@
                                                  alt="logo">
                                             <h4 class="mt-1 mb-2 pb-1">MovieMingle</h4>
                                         </div>
-                                        <form>
+                                        <form method="POST">
                                             <p style="font-weight: bold">Sign Up</p>
                                             <div class="form-outline mb-3">
                                                 <input type="text"
                                                        id="firstName"
                                                        class="form-control"
+                                                       name="firstName"
                                                        placeholder="First Name" />
                                             </div>
                                             <div class="form-outline mb-3">
                                                 <input type="email"
                                                        id="email"
+                                                       name="email"
                                                        class="form-control"
                                                        placeholder="Email address" />
                                             </div>
@@ -51,22 +76,24 @@
                                                 <input type="password"
                                                        id="password"
                                                        class="form-control"
+                                                       name="password1"
                                                        placeholder="Password" />
                                             </div>
                                             <div class="form-outline mb-3">
                                                 <input type="password"
                                                        id="confirmPassword"
                                                        class="form-control"
+                                                       name="password2"
                                                        placeholder="Confirm Password" />
                                             </div>
                                             <div class="text-center pt-1 mb-4 pb-1">
-                                                <button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-center pb-4">
-                                                <p class="mb-0 me-2">Already have an account?</p>
-                                                <a href="/login" class="btn btn-outline-dark">Log In</a>
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
                                             </div>
                                         </form>
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2">Already have an account?</p>
+                                            <a href="/login" class="btn btn-outline-dark">Log In</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,19 @@
+#login-right .background-image {
+  background-image: url("images/move1.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+#login-left .background-image {
+  background-image: url("images/movie2.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.change-color-on-hover:hover a {
+  color: white; /* Change the text color to white when the button is hovered over */
+}

@@ -1,5 +1,7 @@
 .custom-body-bg {
   background-color: #121119;
+  margin: 0;
+  padding: 0;
 }
 
 /* Custom CSS for the search bar */
@@ -26,4 +28,61 @@
 
 #navBarSearchForm input[type="text"] {
   width: 430px !important;
+}
+
+.sidenav {
+  position: absolute;
+  top: 60px; /* Adjust to the height of the navbar */
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #06090d;
+  padding-top: 20px;
+  overflow-y: auto;
+}
+
+.sidenav h5 {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 20px;
+  display: block;
+  color: white;
+  font-weight: bold;
+}
+
+.sidenav ul li {
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #ccc;
+  display: block;
+}
+
+.sidenav ul li.genre a {
+  color: #ccc;
+  text-decoration: none;
+}
+.sidenav ul li.active-genre a {
+  color: #fff;
+}
+
+.sidenav ul li a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Adjust the main content to the right of the sidebar */
+.main {
+  margin-left: 250px; /* Width of the sidebar */
+  padding: 20px;
+  color: #ccc;
+}
+.custom-dropdown-item {
+  color: white; /* Text color when not hovered */
+  text-decoration: none; /* Remove underline */
+}
+
+.custom-dropdown-item:hover {
+  color: black; /* Text color on hover */
+  text-decoration: solid;
 }

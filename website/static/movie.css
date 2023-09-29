@@ -67,7 +67,7 @@
   background-size: cover;
   z-index: 1 !important;
   width: 214px; /* Adjust the width as desired */
-  height: 390px; /* Maintain the same aspect ratio */
+  height: 375px; /* Maintain the same aspect ratio */
   display: block;
   border-radius: 4px;
 }

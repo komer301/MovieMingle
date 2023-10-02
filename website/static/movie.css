@@ -11,7 +11,7 @@
   width: 175px; /* Half of the original width */
   height: 10px; /* Half of the original height */
   background-color: #1e1b26;
-  margin: 60px auto 0 auto;
+  margin: 20px auto 0 auto;
   box-shadow: 5px 5px 115px -14px black;
   border-radius: 4px;
 }
@@ -325,4 +325,8 @@ h3.details {
       minmax(50%, 1fr)
     ); /* Adjust for 2 columns on smaller screens */
   }
+}
+
+.foreign {
+  margin-top: 70px;
 }

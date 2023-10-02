@@ -30,15 +30,21 @@
   width: 430px !important;
 }
 
+/* #parent {
+  height: 100%;
+  position: relative;
+} */
 .sidenav {
   position: absolute;
   top: 60px; /* Adjust to the height of the navbar */
   left: 0;
+  height: 900px;
   bottom: 0;
   width: 200px;
-  background-color: #06090d;
+  background-color: #121119;
   padding-top: 20px;
   overflow-y: auto;
+  z-index: 99;
 }
 
 .sidenav h5 {
@@ -76,6 +82,7 @@
   margin-left: 250px; /* Width of the sidebar */
   padding: 20px;
   color: #ccc;
+  display: block;
 }
 .custom-dropdown-item {
   color: white; /* Text color when not hovered */

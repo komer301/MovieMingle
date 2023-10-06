@@ -30,10 +30,6 @@
   width: 430px !important;
 }
 
-/* #parent {
-  height: 100%;
-  position: relative;
-} */
 .sidenav {
   position: absolute;
   top: 60px; /* Adjust to the height of the navbar */
@@ -84,6 +80,7 @@
   color: #ccc;
   display: block;
 }
+
 .custom-dropdown-item {
   color: white; /* Text color when not hovered */
   text-decoration: none; /* Remove underline */

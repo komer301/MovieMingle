@@ -35,8 +35,32 @@
         </a>
     </div>
 {% endblock %}
+{% block sidenav %}
+    <div id="parent">
+        <div class="sidenav">
+            <h5>Genre</h5>
+            <ul class="list-unstyled">
+                <li class="genre">
+                    <a href="">Action</a>
+                </li>
+                <li class="genre">
+                    <a href="">Adventure</a>
+                </li>
+                <li class="genre">
+                    <a href="">Comedy</a>
+                </li>
+                <li class="genre">
+                    <a href="">Drama</a>
+                </li>
+                <li class="genre">
+                    <a href="">Horror</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
 {% block content %}
-    <h2>Top Trending TV Shows</h2>
+    <h2>Top Rated TV Shows</h2>
     <div class="movie-grid">
         {% for show in data %}
             {% set id = show[0] %}

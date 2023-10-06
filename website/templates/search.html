@@ -1,0 +1,82 @@
+{% extends "home.html" %}
+{% block link %}
+    <link rel="stylesheet"
+          type="text/css"
+          href="{{ url_for('static', filename='movie.css') }}">
+{% endblock %}
+{% block navbar %}
+    <div class="navbar-nav ml-auto" style="margin-top: 8px">
+        <a class="nav-item nav-link custom-nav-link "
+           style="text-decoration: solid"
+           href="/movies">Movies</a>
+        <a class="nav-item nav-link custom-nav-link"
+           style="text-decoration: solid"
+           href="">TV Shows</a>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle custom-nav-link"
+               href="#"
+               id="watchlistDropdown"
+               role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               style="text-decoration: solid"
+               aria-expanded="false">Watchlist</a>
+            <div class="dropdown-menu"
+                 style="background-color: #06090d"
+                 aria-labelledby="watchlistDropdown">
+                <a class="dropdown-item custom-dropdown-item"  href="#">Movies</a>
+                <a class="dropdown-item custom-dropdown-item" href="#">TV Shows</a>
+            </div>
+        </div>
+        <a class="nav-item nav-link" style="margin-top: 0px" href="#">
+            <img src="/static/images/profile_picture.svg"
+                 alt="User Profile"
+                 class="rounded-circle custom-user-photo">
+        </a>
+    </div>
+{% endblock %}
+{% block content %}
+    <h2 style="text-align: center; margin: -23 auto; max-width: 1920px;">Search results for "{{ name }}"</h2>
+    <div class="movie-grid" style="margin: -23 auto; justify-content: center">
+        {% for show in data %}
+            {% set id = show[0] %}
+            {% set title = show[1] %}
+            {% set genre = show[2][:2] %}
+            {% set rating = show[3] %}
+            {% set poster = show[4] %}
+            <div class="cellphone-container">
+                <div class="movie">
+                    <div class="movie-img" style="background-image: url({{ poster }})"></div>
+                    <div class="text-movie-cont">
+                        <div class="mr-grid">
+                            <div class="col1">
+                                <h1>{{ title }}</h1>
+                                <ul class="movie-gen">
+                                    <li>{{ ", ".join(genre) }}</li>
+                                </ul>
+                                <ul class="movie-likes">
+                                    <li>
+                                        <i class="fa fa-star"></i>{{ rating }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mr-grid action-row">
+                        <div class="col2">
+                            <div class="watch-btn small">
+                                <i class="material-icons details-icon"></i> Details
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <button class="watch-btn small">
+                                <i class="material-icons add-to-watchlist-icon"></i> Add to Watchlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block sidenav %}{% endblock %}

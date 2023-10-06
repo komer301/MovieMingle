@@ -20,16 +20,20 @@
     <body class="custom-body-bg">
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-bg">
             <div class="container-fluid">
-                <a class="nav-item nav-link" href="#">
-                    <img src="static/images/dark_background.png"
+                <a class="nav-item nav-link" href="">
+                    <img src="/static/images/dark_background.png"
                          width="60px"
                          style="margin-left: 5px"
                          class="">
                 </a>
-                <form class="form-inline mx-auto" role="search" id="navBarSearchForm">
+                <form class="form-inline mx-auto"
+                      role="search"
+                      method="POST"
+                      id="navBarSearchForm">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text"
+                                   name="searchbar"
                                    class="form-control custom-search-bar"
                                    style="background-color: #121119;
                                           color: white;
@@ -48,28 +52,7 @@
                 {% block navbar %}{% endblock %}
             </div>
         </nav>
-        <div id="parent">
-            <div class="sidenav">
-                <h5>Genre</h5>
-                <ul class="list-unstyled">
-                    <li class="genre">
-                        <a href="">Action</a>
-                    </li>
-                    <li class="genre">
-                        <a href="">Adventure</a>
-                    </li>
-                    <li class="genre">
-                        <a href="">Comedy</a>
-                    </li>
-                    <li class="genre">
-                        <a href="">Drama</a>
-                    </li>
-                    <li class="genre">
-                        <a href="">Horror</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        {% block sidenav %}{% endblock %}
         <!-- Main Content -->
         <div class="main">
             {% block content %}{% endblock %}

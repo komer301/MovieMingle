@@ -117,7 +117,9 @@ h5 {
   color: #e7e7e7;
   margin: 0px;
 }
-.col1 h1 {
+.col1 h1,
+h2 {
+  color: #e7e7e7;
   font-size: 20px;
   font-family: "Fragment Mono", monospace;
   word-wrap: break-word;
@@ -297,6 +299,7 @@ h3.details {
 /* Remove the .movie-grid and .cellphone-container styles */
 .movie-grid {
   width: 100%;
+  max-width: 200vh;
   display: grid;
   grid-template-columns: repeat(
     auto-fill,

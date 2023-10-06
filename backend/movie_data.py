@@ -38,18 +38,68 @@ def multiSearch(title):
     url = f"https://api.themoviedb.org/3/search/multi?query={final}&include_adult=true&language=en&page=1"
     response = requests.get(url, headers=headers)
     data = json.loads(response.text)
-    # for show in data['results']:
-        # print(show['id'])
-    # json_formatted = json.dumps(data['results'], indent=2)
-    json_formatted2 = json.dumps(data['total_results'], indent=2)
-    print(json_formatted2)
+    final = []
+    if 'results' in data and data['results']:
+        for result in data['results']:
+            id = result.get('id',0)
+            if 'name' in result:
+                title = truncate_movie_title(result.get('name'))
+            else:
+                title = truncate_movie_title(result.get('title'))
+            if 'genre_ids' in result:
+                genres = result.get('genre_ids')
+            else:
+                genres = []
+            media_type = result.get('media_type')
+            for x in range(len(genres)):
+                genres[x] =  genreTranslator(genres[x],media_type)
+            rating = result.get('vote_average',0)
+            poster_path = result.get('poster_path')
+            if poster_path:
+                poster_path = 'https://image.tmdb.org/t/p/w500' + poster_path
+                final.append([id,title,genres,rating,poster_path])
+    final = sorted(final, key=lambda x: x[3], reverse=True)
+    return final
 
-def truncate_movie_title(title, max_chars=28):
-    if len(title) > max_chars:
-        truncated_title = title[:max_chars - 3] + "..."
-    else:
-        truncated_title = title
+def truncate_movie_title(title, max_chars_per_line=14, max_lines=2):
+    words = title.split()
+    truncated_title = ""
+    line_length = 0
+    line_count = 0
+
+    for word in words:
+        if line_count >= max_lines:
+            break
+
+        if line_length + len(word) + 1 <= max_chars_per_line:
+            if truncated_title:
+                truncated_title += " "
+                line_length += 1
+            truncated_title += word
+            line_length += len(word)
+        else:
+            # Add the word to the current line even if it exceeds max_chars_per_line
+            if truncated_title:
+                truncated_title += " "
+                line_length += 1
+            truncated_title += word
+            line_length += len(word)
+            break  # Stop adding words to this line
+
+        if line_length >= max_chars_per_line:
+            line_count += 1
+            line_length = 0
+
+    if truncated_title != title:
+        if truncated_title.endswith(" "):
+            truncated_title = truncated_title.rstrip() + "..."
+        else:
+            truncated_title = truncated_title + "..."
+
     return truncated_title
+
+
+
 
 def trendingInfo(type,time_window):
     url = f"https://api.themoviedb.org/3/trending/{type}/{time_window}?language=en-US"
@@ -84,9 +134,10 @@ def upcomingInfo(type):
                 title = truncate_movie_title(result.get('title'))
                 genres = result.get('genre_ids')
                 for x in range(len(genres)):
+                    print(genreTranslator(genres[x],"movie"))
                     genres[x] = genreTranslator(genres[x],"movie")
                 rating = result.get('vote_average',0)
-                
+    
                 poster_path = 'https://image.tmdb.org/t/p/w500' + result.get('poster_path','None')
                 final.append([id,title,genres,rating,poster_path])
     return final
@@ -108,4 +159,25 @@ def tvShowTrending():
             final.append([id,title,genres,rating,poster_path])
     return final
 
-multiSearch('the office')
+def asteroidCollision(asteroids):
+    stack = [] 
+    for i in range(len(asteroids)):
+        isAlive = True
+        while len(stack) != 0 and stack[-1] * asteroids[i] < 0:
+            print("first",stack[-1])
+            print(asteroids[i], end='\n')
+            if abs(asteroids[i]) < abs(stack[-1]):
+                isAlive = False
+                break
+            elif abs(asteroids[i]) > abs(stack[-1]):
+                stack.pop()
+                isAlive = False
+            else:
+                stack.pop()
+                isAlive = False
+                break
+        if isAlive:
+            stack.append(asteroids[i])
+    return stack
+
+print(asteroidCollision([-2,-1,1,2]))

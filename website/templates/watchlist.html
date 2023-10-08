@@ -6,13 +6,13 @@
 {% endblock %}
 {% block navbar %}
     <div class="navbar-nav ml-auto" style="margin-top: 8px">
-        <a class="nav-item active nav-link custom-nav-link "
+        <a class="nav-item nav-link custom-nav-link "
            style="text-decoration: solid"
            href="">Movies</a>
         <a class="nav-item nav-link custom-nav-link"
            style="text-decoration: solid"
            href="/tvshows">TV Shows</a>
-        <a class="nav-item nav-link custom-nav-link"
+        <a class="nav-item active nav-link custom-nav-link"
            style="text-decoration: solid"
            href="/watchlist">Watchlist</a>
         <!-- <div class="nav-item dropdown">
@@ -54,7 +54,7 @@
     </div>
 {% endblock %}
 {% block content %}
-    <h2>Top Trending Movies</h2>
+    <h2>Watchlist</h2>
     <div class="movie-grid">
         {% for movie in data %}
             {% set id = movie[0] %}
@@ -89,8 +89,8 @@
                         <div class="col2">
                             <button type="button"
                                     class="watch-btn small"
-                                    onClick="addWatchlist({{ id }})">
-                                <i class="material-icons add-to-watchlist-icon"></i> Add to Watchlist
+                                    onClick="removeWatchlist({{ id }})">
+                                <i class="material-icons add-to-watchlist-icon"></i> Remove Watchlist
                             </button>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
             </div>
         {% endfor %}
     </div>
-    <h2 class="foreign">Upcoming Movies</h2>
+    <!-- <h2 class="foreign">Upcoming Movies</h2>
     <div class="movie-grid">
         {% for movie in upcoming %}
             {% set id = movie[0] %}
@@ -131,9 +131,7 @@
                             </div>
                         </div>
                         <div class="col2">
-                            <button type="button"
-                                    class="watch-btn small"
-                                    onClick="addWatchlist({{ id }})">
+                            <button type="button" class="watch-btn small" onClick="addWatchlist({{ id }})">
                                 <i class="material-icons add-to-watchlist-icon"></i> Add to Watchlist
                             </button>
                         </div>
@@ -141,5 +139,5 @@
                 </div>
             </div>
         {% endfor %}
-    </div>
+    </div> -->
 {% endblock %}

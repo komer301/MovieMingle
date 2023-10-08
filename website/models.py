@@ -8,6 +8,7 @@ class Watchlist(db.Model):
     movie_id = db.Column(db.Integer)
     date_time = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    is_movie = db.Column(db.Boolean)
 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)

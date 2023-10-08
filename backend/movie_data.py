@@ -134,7 +134,6 @@ def upcomingInfo(type):
                 title = truncate_movie_title(result.get('title'))
                 genres = result.get('genre_ids')
                 for x in range(len(genres)):
-                    print(genreTranslator(genres[x],"movie"))
                     genres[x] = genreTranslator(genres[x],"movie")
                 rating = result.get('vote_average',0)
     
@@ -159,25 +158,7 @@ def tvShowTrending():
             final.append([id,title,genres,rating,poster_path])
     return final
 
-def asteroidCollision(asteroids):
-    stack = [] 
-    for i in range(len(asteroids)):
-        isAlive = True
-        while len(stack) != 0 and stack[-1] * asteroids[i] < 0:
-            print("first",stack[-1])
-            print(asteroids[i], end='\n')
-            if abs(asteroids[i]) < abs(stack[-1]):
-                isAlive = False
-                break
-            elif abs(asteroids[i]) > abs(stack[-1]):
-                stack.pop()
-                isAlive = False
-            else:
-                stack.pop()
-                isAlive = False
-                break
-        if isAlive:
-            stack.append(asteroids[i])
-    return stack
 
-print(asteroidCollision([-2,-1,1,2]))
+def watchlistDisplay(movie_ids):
+    final = []
+    for id in movie_ids:
